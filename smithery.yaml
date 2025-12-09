@@ -1,0 +1,85 @@
+# Smithery MCP Server Configuration
+runtime: "typescript"
+
+# Metadata
+name: "Alfred API MCP Server"
+description: "Access Alfred's skills, connections, and executions via Model Context Protocol"
+
+# Documentation
+readme: |
+  # Alfred MCP Server
+
+  Connect Claude and other MCP clients to Alfred's REST API for managing AI workflows, skills, and integrations.
+
+  ## Features
+
+  - 📋 **Skills Management**: Create, list, update, and delete Alfred skills
+  - 🔌 **Connections Management**: Manage MCP server connections and integrations
+  - 📊 **Execution History**: View execution logs and statistics
+  - 🔑 **API Key Management**: Create and manage Alfred API keys
+
+  ## Configuration
+
+  ### Required
+  - **apiKey**: Your Alfred API key (format: `alf_xxxxx...`)
+
+  ### Optional
+  - **baseUrl**: Alfred API URL (default: `http://localhost:3001/api/v1`)
+  - **timeout**: Request timeout in milliseconds (default: `30000`)
+
+  ## Available Tools
+
+  ### Skills (6 tools)
+  - `alfred_list_skills` - List all skills with filtering
+  - `alfred_get_skill` - Get specific skill details
+  - `alfred_create_skill` - Create a new skill
+  - `alfred_update_skill` - Update entire skill
+  - `alfred_patch_skill` - Partially update skill
+  - `alfred_delete_skill` - Delete a skill
+
+  ### Connections (6 tools)
+  - `alfred_list_connections` - List all connections
+  - `alfred_get_connection` - Get connection details
+  - `alfred_create_connection` - Create new connection
+  - `alfred_update_connection` - Update connection
+  - `alfred_patch_connection` - Partially update connection
+  - `alfred_delete_connection` - Delete connection
+
+  ### Executions (5 tools)
+  - `alfred_list_executions` - List execution history
+  - `alfred_get_execution` - Get execution details
+  - `alfred_get_execution_trace` - Get execution trace
+  - `alfred_get_execution_stats` - Get statistics
+  - `alfred_delete_execution` - Delete execution record
+
+  ### Auth (3 tools)
+  - `alfred_create_api_key` - Create new API key
+  - `alfred_list_api_keys` - List all API keys
+  - `alfred_delete_api_key` - Delete API key
+
+  ## Usage Examples
+
+  ### STDIO (Claude Desktop)
+  ```json
+  {
+    "mcpServers": {
+      "alfred": {
+        "command": "npx",
+        "args": ["-y", "@alfred/mcp-server"],
+        "env": {
+          "ALFRED_API_KEY": "alf_xxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+          "ALFRED_BASE_URL": "http://localhost:3001/api/v1"
+        }
+      }
+    }
+  }
+  ```
+
+  ### HTTP (Smithery Deployment)
+  Configure via Smithery web interface with your Alfred API key and base URL.
+
+# Example configuration for Smithery users
+exampleConfig:
+  apiKey: "alf_xxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+  baseUrl: "http://localhost:3001/api/v1"
+  timeout: 30000

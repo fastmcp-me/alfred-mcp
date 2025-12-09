@@ -1,0 +1,42 @@
+{
+  "name": "@alfred/mcp-server",
+  "version": "1.0.0",
+  "description": "MCP server for Alfred REST API - Connect Claude to Alfred's workflow automation",
+  "type": "module",
+  "module": "src/index.ts",
+  "main": "dist/index.js",
+  "bin": {
+    "alfred-mcp": "dist/index.js"
+  },
+  "scripts": {
+    "dev": "smithery dev",
+    "build": "npm run build:http",
+    "build:http": "smithery build",
+    "build:stdio": "tsc",
+    "start": "npm run start:http",
+    "start:http": "node .smithery/index.cjs",
+    "start:stdio": "node dist/index.js",
+    "prepublishOnly": "npm run build:stdio"
+  },
+  "keywords": ["mcp", "alfred", "ai", "agent", "workflow", "automation", "claude"],
+  "author": "Alfred Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/alfred-mcp.git"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.18.2",
+    "@smithery/sdk": "^1.6.4",
+    "node-fetch": "^3.3.2",
+    "zod": "^3.25.46"
+  },
+  "devDependencies": {
+    "@smithery/cli": "^1.4.0",
+    "@types/node": "^22.0.0",
+    "typescript": "^5.7.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
